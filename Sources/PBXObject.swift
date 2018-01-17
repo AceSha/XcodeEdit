@@ -139,10 +139,12 @@ public class PBXBuildStyle : PBXProjectItem {
 
 public class XCBuildConfiguration : PBXBuildStyle {
   public let name: String
+  public let buildSettings: Fields
 
   public required init(id: Guid, fields: Fields, allObjects: AllObjects) throws {
     self.name = try fields.string("name")
-
+    self.buildSettings = try fields.field("buildSettings")
+    
     try super.init(id: id, fields: fields, allObjects: allObjects)
   }
 }

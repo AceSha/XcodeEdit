@@ -117,4 +117,15 @@ internal extension Dictionary where Key == String {
 
     return value
   }
+
+  func field(_ key: String) throws -> Fields {
+    guard let val = self[key] else {
+      throw AllObjectsError.fieldMissing(key: key)
+    }
+    guard let value = val as? Fields else {
+      throw AllObjectsError.wrongType(key: key)
+    }
+
+    return value
+  }
 }
